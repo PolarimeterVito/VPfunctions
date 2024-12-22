@@ -1,5 +1,3 @@
-# VPfunctions
-
 **VPfunctions** is a Python library designed for extracting, processing, and visualizing data from CSV files, specifically tailored for noise measurements and related analyses.
 
 ## Features
@@ -110,4 +108,5 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Acknowledgments
 
 Thanks to all contributors and users for their feedback and support.
+
 
