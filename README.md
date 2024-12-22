@@ -78,8 +78,8 @@ The library contains the following key functions:
 - `calc_rmsRin(measData)`: Calculate integrated RMS RIN.
 - `correct_BB_meas(data_signal, data_bgd, voltage, resistance=50)`: Correct basebandmeasurements.
 - `norm_spectrum(OSA_data)`: Normalize an optical spectrum to its maximum value.
-- `calc_FWHM(OSA_data)`: Calculate the full width at half maximum (FWHM) of a spectrum.
-- `calc_CWL(OSA_data)`: Calculate the central wavelength (CWL) of a spectrum.
+- `calc_FWHM(OSA_data, printFWHM = True)`: Calculate the full width at half maximum (FWHM) of a spectrum. Printing the result my be switched off.
+- `calc_CWL(OSA_data, printCWL = True)`: Calculate the central wavelength (CWL) of a spectrum. Printing the result my be switched off.
 
 ### Visualization
 
