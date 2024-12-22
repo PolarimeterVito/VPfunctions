@@ -21,6 +21,17 @@ To use VPfunctions, first clone the repository and install the library using pip
 pip install VPfunctions
 ```
 
+You can also directly install the library from GitHub:
+
+```bash
+pip install git+https://github.com/PolarimeterVito/VPfunctions.git
+```
+
+For updates, use:
+```bash
+pip install --upgrade git+https://github.com/PolarimeterVito/VPfunctions.git
+```
+
 ## Dependencies
 
 The library requires the following Python packages:
