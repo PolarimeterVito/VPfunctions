@@ -3,7 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.constants as sp
 
-from .manipulators import calc_phaseNoise, calc_freqNoise, calc_fractFreqNoise, calc_timingJitter, calc_Linewidth, calc_rmsRin, normalize_Lf_frep, scale_Lf_opt
+from .manipulators import (
+    calc_phaseNoise, 
+    calc_freqNoise, 
+    calc_fractFreqNoise, 
+    calc_timingJitter, 
+    calc_Linewidth, 
+    calc_rmsRin, 
+    normalize_Lf_frep, 
+    scale_Lf_opt
+)
+
 from .readers import read_RSRSWP_data
 
 
