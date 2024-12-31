@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="VPfunctions",
-    version="0.3.0",
+    version="0.3.1",
     description="A library for extracting, processing, and visualizing data, related to the measurement equipment of the Optical Metrology Research Group at the University of Vienna.",
     author="Vito Fabian Pecile",
     author_email="vito.pecile@univie.ac.at",
