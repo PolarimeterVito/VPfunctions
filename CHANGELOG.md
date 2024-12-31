@@ -1,6 +1,11 @@
 # Changelog
 
-## [0.3.0] - 2024-12-31
+## [0.3.1] - 2024-12-31
+### Added
+- Added `py.typed` to declare type hint support.
+- Included a `.pyi` stub file for improved type checking and autocompletion.
+
+## [0.3.0] - 2024-12-30
 ### Changed
 - **Overhauled Functions**:
   - All calculation and plotting functions have been comprehensively refactored for improved performance and usability:

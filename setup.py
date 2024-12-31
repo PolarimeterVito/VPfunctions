@@ -8,6 +8,9 @@ setup(
     author_email="vito.pecile@univie.ac.at",
     url="https://github.com/PolarimeterVito/VPfunctions",
     packages=find_packages(),
+    package_data={
+        "VPfunctions": ["*.pyi", "py.typed"],
+    },
     install_requires=[
         "numpy",
         "matplotlib",
@@ -19,4 +22,6 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
 )
