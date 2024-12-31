@@ -1,17 +1,30 @@
-**VPfunctions** is a Python library designed for extracting, processing, and visualizing data from CSV files, specifically tailored for noise measurements and related analyses.
+# Readme
+
+**VPfunctions** is a Python library designed for extracting, processing, and visualizing data from measurement devices and software tools, which are commonly used in the Optical Metrology Research Group located at the Faculty of Physics, University of Vienna, Austria.
 
 ## Features
 
-- **File Handling**: Extract filenames with specific extensions from directories.
-- **Data Parsing**: Parse and analyze measurement data from custom CSV formats.
-- **Noise Analysis**: Compute phase noise, frequency noise, timing jitter, fractional frequency noise, and more.
-- **Visualization**: Generate plots for various noise characteristics and save them automatically.
-- **Specialized Functions**:
+- **File Handling**: Extract filenames with specific extensions from directories, now supporting a variable root directory.
+- **Data Parsing**: Parse and analyze measurement data from custom CSV formats, including files from specific devices and software tools:
+  - **Rohde & Schwarz FSWP Phase Noise Analyzer**:
+    - Noise files (AM Noise, Phase Noise, and Baseband Noise).
+    - RF spectrum analyzer files.
+  - **Yokogawa AQ6374 Optical Spectrum Analyzer** files.
+  - **Thorlabs Redstone Optical Spectrum Analyzer** files.
+  - **Thorlabs Powermeter Software** files.
+  - **RP Fiber Power** simulation output files.
+- **Noise Analysis**: Compute phase noise, frequency noise, timing jitter, fractional frequency noise, integrated RMS relative intensity noise (RIN), and more.
+- **Optical Spectrum Analysis**: Compute the Full Width at Half Maximum (FWHM), the center wavelength (CWL) and normalize optical spectra.
+- **Visualization**: Generate consistent and customizable plots for various noise characteristics and save them automatically.
+- **Optimized Functions**: All functions now feature:
+  - Enhanced speed using NumPy operations.
+  - Support for flexible input types.
+  - Comprehensive type annotations and error handling.
+- **Specialized Tools**:
   - Scaling phase noise to optical frequencies.
   - Normalizing phase noise to laser repetition rates.
   - Estimating linewidth using the beta-separation line approach.
-  - Calculating integrated RMS relative intensity noise (RIN).
-  - Extracting and normalizing optical spectra.
+
 
 ## Installation
 
@@ -47,20 +60,20 @@ These dependencies will be automatically installed if you follow the installatio
 Here’s a simple example of how to use VPfunctions:
 
 ```python
-from VPfunctions import VPfunctions
+import VPfunctions as vp
 
 # Extract all filenames with the .csv extension
-all_files = VPfunctions.get_all_filenames(".csv")
+all_files = vp.get_all_filenames(".csv")
 print(all_files)
 
 # Read and process noise measurement data from a CSV file
-measType, fcarrier, Pcarrier, measData = VPfunctions.read_RSRSWP_data("example.csv")
+measType, fcarrier, Pcarrier, measData = vp.read_RSRSWP_data("example.csv")
 print("Measurement Type:", measType)
 print("Carrier Frequency (Hz):", fcarrier)
 print("Carrier Power (dBm):", Pcarrier)
 
-# Plot the phase noise
-VPfunctions.plot_Lf(measData, "example_output")
+# Plot L(f)
+vp.plot_Lf(measData, "example_output")
 ```
 
 ## Library Structure
@@ -69,7 +82,7 @@ The library contains the following key functions:
 
 ### File and Data Handling
 
-- `get_all_filenames(file_ext='.CSV')`: Extract filenames with a specific extension from directories.
+- `get_all_filenames(file_ext='.CSV', root_dir='.')`: Extract filenames with a specific extension from directories.
 - `read_RSRSWP_data(filename, trace=1, sep=',')`: Parse CSV data for noise measurements from R&S FSWP.
 - `read_RPFP_plot_data(filename, trace)`: Read RPFP plot data for a specific trace.
 - `read_TLPM_data(filename)`: Read data from Thorlabs power meter files with multiple power traces.
@@ -115,9 +128,3 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Acknowledgments
-
-Thanks to all contributors and users for their feedback and support.
-
-

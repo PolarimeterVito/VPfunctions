@@ -27,6 +27,8 @@ from .plotters import (
     plot_Linewidth,
     plot_Lf_AM,
     plot_integratedRmsRin,
+    plot_all_noise_files,
+    set_plot_params,
 )
 
 # Expose all imported functions at the package level
@@ -54,4 +56,6 @@ __all__ = [
     "plot_Linewidth",
     "plot_Lf_AM",
     "plot_integratedRmsRin",
+    "plot_all_noise_files",
+    "set_plot_params",
 ]

@@ -16,3 +16,16 @@ env/
 # Ignore distribution files
 dist/
 *.egg-info/
+
+# Test files and environments
+test_env/
+tests/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# Visual Studio Code
+.vscode/
