@@ -17,6 +17,10 @@ from .manipulators import (
     calc_rmsRin,
     normalize_Lf_frep,
     scale_Lf_opt,
+    norm_spectrum,
+    calc_FWHM,
+    calc_CWL,
+    correct_BB_meas,
 )
 from .plotters import (
     plot_Lf,
@@ -48,6 +52,10 @@ __all__ = [
     "calc_rmsRin",
     "normalize_Lf_frep",
     "scale_Lf_opt",
+    "norm_spectrum",
+    "calc_FWHM",
+    "calc_CWL",
+    "correct_BB_meas",
     "plot_Lf",
     "plot_S_phi",
     "plot_S_nu",

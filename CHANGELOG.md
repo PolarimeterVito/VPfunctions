@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.2] - 2024-12-31
+### Fixed
+- Forgot a few functions in the `__init__.py` file. They were now added, all can be accessed correctly now.
+
 ## [0.3.1] - 2024-12-31
 ### Added
 - Added `py.typed` to declare type hint support.
