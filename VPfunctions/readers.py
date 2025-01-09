@@ -5,6 +5,7 @@ from datetime import datetime as dt
 from typing import List, Tuple
 from numpy.typing import NDArray
 import sys
+import warnings
 
 def get_all_filenames(
         file_ext: str = '.csv', 
@@ -37,7 +38,7 @@ def get_all_filenames(
                 all_fn.append(os.path.join(dirpath, filename))
     return all_fn
 
-def read_RSRSWP_data(
+def read_RS_FSWP_noise_data(
         filename: str, 
         trace: int=1, 
         sep: str=','
@@ -66,7 +67,7 @@ def read_RSRSWP_data(
         raise FileNotFoundError(f"The file '{filename}' does not exist.")
     
     # Validate the 'trace' parameter
-    if not (1 <= trace <= 8):
+    if not (1 <= trace <= 6):
         raise ValueError("The 'trace' parameter must be an integer between 1 and 8.")
     
     # Validate the 'sep' parameter
@@ -292,7 +293,7 @@ def read_Redstone_data(
         measData = np.array([wl,pwr_data], dtype=np.float64)
     return measData
 
-def read_RSRSWP_RF_data(
+def read_RS_FSWP_RF_data(
         filename: str, 
         sep: str = ';'
     )-> NDArray[np.float64]:
@@ -336,3 +337,28 @@ def read_RSRSWP_RF_data(
         
     measData = np.array([freq, psd], dtype=np.float64)
     return measData
+
+# Aliases for backwards compatibility of of RS FSWP data reader functions
+def read_RSRSWP_data(*args, **kwargs):
+    """
+    Deprecated alias for `read_RSFSWP_data`. Please use `read_RS_FSWP_noise_data` instead.
+    """
+    warnings.warn(
+        "'read_RSRSWP_data' is deprecated and will be removed in a future release. "
+        "Please use 'read_RS_FSWP_noise_data' instead.",
+        DeprecationWarning,
+        stacklevel=2
+    )
+    return read_RS_FSWP_noise_data(*args, **kwargs)
+
+def read_RSRSWP_RF_data(*args, **kwargs):
+    """
+    Deprecated alias for `read_RSRSWP_RF_data`. Please use `read_RS_FSWP_RF_data` instead.
+    """
+    warnings.warn(
+        "'read_RSRSWP_RF_data' is deprecated and will be removed in a future release. "
+        "Please use 'read_RS_FSWP_RF_data' instead.",
+        DeprecationWarning,
+        stacklevel=2
+    )
+    return read_RS_FSWP_RF_data(*args, **kwargs)

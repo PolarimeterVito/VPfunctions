@@ -1,6 +1,7 @@
 from typing import List, Tuple, Union, Sequence
 import numpy as np
 from numpy.typing import NDArray
+import pandas as pd
 
 # File and Data Handling
 def get_all_filenames(
@@ -32,6 +33,17 @@ def read_Redstone_data(
 ) -> NDArray[np.float64]: ...
 
 def read_RSRSWP_RF_data(
+    filename: str, 
+    sep: str = ";"
+) -> NDArray[np.float64]: ...
+
+def read_RS_FSWP_noise_data(
+    filename: str, 
+    trace: int = 1, 
+    sep: str = ","
+) -> Tuple[str, float, float, NDArray[np.float64]]: ...
+
+def read_RS_FSWP_RF_data(
     filename: str, 
     sep: str = ";"
 ) -> NDArray[np.float64]: ...
@@ -152,3 +164,16 @@ def set_plot_params(
     style: str = "presentation", 
     dpi: int = 600
 ) -> None: ...
+
+# Dataframe Utilities
+def AQ6374_to_df (
+        file_names: List[str]
+    ) -> pd.DataFrame: ...
+
+def Redstone_to_df (
+        file_names: List[str]
+    ) -> pd.DataFrame: ...
+
+def FSWP_PN_to_df (
+        file_names: List[str]
+    ) -> pd.DataFrame: ...

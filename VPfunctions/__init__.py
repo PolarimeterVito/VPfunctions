@@ -7,6 +7,8 @@ from .readers import (
     read_AQ6374_data,
     read_Redstone_data,
     read_RSRSWP_RF_data,
+    read_RS_FSWP_noise_data,
+    read_RS_FSWP_RF_data,
 )
 from .manipulators import (
     calc_phaseNoise,
@@ -33,6 +35,11 @@ from .plotters import (
     plot_integratedRmsRin,
     plot_all_noise_files,
     set_plot_params,
+)
+from .df_utils import (
+    AQ6374_to_df,
+    Redstone_to_df,
+    FSWP_PN_to_df,
 )
 
 # Expose all imported functions at the package level
@@ -66,4 +73,9 @@ __all__ = [
     "plot_integratedRmsRin",
     "plot_all_noise_files",
     "set_plot_params",
+    "read_RS_FSWP_noise_data",
+    "read_RS_FSWP_RF_data",
+    "AQ6374_to_df",
+    "Redstone_to_df",
+    "FSWP_PN_to_df",
 ]

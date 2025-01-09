@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0] - 2025-01-09
+### Added
+- Module `df_utils.py` added, containing a few new function for easy integration of pandas DataFrames.
+
+### Fixed
+- Changed the name of the functions `read_RSRSWP_data` and `read_RSRSWP_RF_data`, which actually have a typo in their function name to new, correct names (`read_RS_FSWP_noise_data` and `read_RS_FSWP_RF_data` respectively). The functionality did not change and downwards compatibility is maintained by adding deprecated aliases of the "new" functions with the old names.
+
 ## [0.3.2] - 2024-12-31
 ### Fixed
 - Forgot a few functions in the `__init__.py` file. They were now added, all can be accessed correctly now.

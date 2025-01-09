@@ -24,6 +24,9 @@
   - Scaling phase noise to optical frequencies.
   - Normalizing phase noise to laser repetition rates.
   - Estimating linewidth using the beta-separation line approach.
+- **Integration of Pandas Dataframes**
+  - A DataFrame containing all variations of phase noise can be easily generated from a list of input files.
+  - A DataFrame containing the normalized PSD, as well as CWL and FWHM of an optical spectrum is returned from a list of input files.
 
 
 ## Installation
@@ -83,14 +86,15 @@ The library contains the following key functions:
 ### File and Data Handling
 
 - `get_all_filenames(file_ext='.CSV', root_dir='.')`: Extract filenames with a specific extension from directories.
-- `read_RSRSWP_data(filename, trace=1, sep=',')`: Parse CSV data for noise measurements from R&S FSWP.
-- `read_RPFP_plot_data(filename, trace)`: Read RPFP plot data for a specific trace.
+- `read_RS_FSWP_noise_data(filename, trace=1, sep=',')`: Parse CSV data for noise measurements from a Rohde&Schwarz FSWP file.
+- `read_RS_FSWP_RF_data(filename, sep=';')`: Read RF data from from a Rohde&Schwarz FSWP file.
+- `read_RPFP_plot_data(filename, trace)`: Read RP fiber power plot data for a specific trace.
 - `read_TLPM_data(filename)`: Read data from Thorlabs power meter files with multiple power traces.
-- `read_AQ6374_data(filename)`: Read measurement data from AQ6374 and extract resolution info.
-- `read_Redstone_data(filename)`: Read measurement data from Redstone files.
-- `read_RSRSWP_RF_data(filename, sep=';')`: Read RF data from R&S FSWP files.
+- `read_AQ6374_data(filename)`: Read measurement data from a Yokogawa AQ6374 and extract resolution info.
+- `read_Redstone_data(filename)`: Read measurement data from Thorlabs Redstone files.
 
-### Noise Calculations
+
+### Noise Calculations and Analysis
 
 - `calc_phaseNoise(measData)`: Compute phase noise.
 - `calc_freqNoise(measData)`: Compute frequency noise.
@@ -100,10 +104,19 @@ The library contains the following key functions:
 - `scale_Lf_opt(measData, wl, fcarrier)`: Scale phase noise to optical frequencies.
 - `normalize_Lf_frep(measData, fcarrier, frep)`: Normalize phase noise to laser repetion rate.
 - `calc_rmsRin(measData)`: Calculate integrated RMS RIN.
-- `correct_BB_meas(data_signal, data_bgd, voltage, resistance=50)`: Correct basebandmeasurements.
+- `correct_BB_meas(data_signal, data_bgd, voltage, resistance=50)`: Correct baseband measurements for the detector background and normalize to the signal power.
+
+### Optical Spectra Handling and Analysis
+
 - `norm_spectrum(OSA_data)`: Normalize an optical spectrum to its maximum value.
 - `calc_FWHM(OSA_data, printFWHM = True)`: Calculate the full width at half maximum (FWHM) of a spectrum. Printing the result my be switched off.
 - `calc_CWL(OSA_data, printCWL = True)`: Calculate the central wavelength (CWL) of a spectrum. Printing the result my be switched off.
+
+### Pandas Dataframe Integration
+
+ - `AQ6374_to_df(file_names)`: Processes spectral data files from a Yokogawa AQ6374 and returns a DataFrame containg the raw data, normalized data, resolution, CWL and FWHM for each file.
+ - `Redstone_to_df(file_names)`: Processes spectral data files from a Thorlabs Redstone OSA and returns a DataFrame containg the raw data, normalized data, resolution, CWL and FWHM for each file.
+ - `FSWP_PN_to_df(file_names)`: Processes Rohde&Schwarz FSWP phase noise files, returning a dataframe containing all 5 common variations of phase noise as well as carrier frequency and power for each file.
 
 ### Visualization
 
