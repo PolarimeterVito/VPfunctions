@@ -14,7 +14,8 @@ setup(
     install_requires=[
         "numpy",
         "matplotlib",
-        "scipy"
+        "scipy",
+        "pandas",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
