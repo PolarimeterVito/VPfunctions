@@ -228,7 +228,7 @@ def FSWP_PN_to_df (
                 S_phy_array[i] = calc_phaseNoise(Lf_array[i])
                 S_nu_array[i] = calc_freqNoise(Lf_array[i])
                 S_y_array[i] = calc_fractFreqNoise(Lf_array[i],f_carrier_array[i])
-                S_x_array[i] = calc_timingJitter(Lf_array[i])
+                S_x_array[i] = calc_timingJitter(Lf_array[i],f_carrier_array[i])
             else:
                 print(f"For file {file} measurement type is not PN, but {meas_type}. Variations of phase noise are set to None.")
                 S_phy_array[i] = None
