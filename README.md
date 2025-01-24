@@ -55,6 +55,7 @@ The library requires the following Python packages:
 - `numpy`
 - `matplotlib`
 - `scipy`
+- `pandas`
 
 These dependencies will be automatically installed if you follow the installation instructions.
 

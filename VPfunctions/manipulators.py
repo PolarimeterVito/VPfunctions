@@ -108,7 +108,7 @@ def calc_timingJitter(
         raise ValueError("Input must have shape (2, n)")
 
     # Perform calculation
-    SCALE_FACTOR = 2 / (2 * np.pi**2 * fcarrier**2)
+    SCALE_FACTOR = 1 / (2 * np.pi**2 * fcarrier**2)
     timingJitter = np.array(
         [measData[0], 
         SCALE_FACTOR * np.power(10, measData[1] / 10)],

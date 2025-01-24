@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.4.1] - 2025-01-24
+### Fixed
+- Corrected a wrong factor of 2 in the function  `calc_timingJitter`, yielding wrong results.
+
 ## [0.4.0] - 2025-01-09
 ### Added
 - Module `df_utils.py` added, containing a few new function for easy integration of pandas DataFrames.
