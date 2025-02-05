@@ -177,3 +177,99 @@ def Redstone_to_df (
 def FSWP_PN_to_df (
         file_names: List[str]
     ) -> pd.DataFrame: ...
+
+class MaterialClass:
+    def __init__(
+        self,
+        wavelength: Union[NDArray[np.float64], Sequence[Sequence[float]]],
+        mode: str = 'provide Sellmeier',
+        **kwargs
+    ) -> None: ...
+
+    def gvd_calculator(
+        self,
+        wavelength: Union[NDArray[np.float64], Sequence[Sequence[float]]],
+        coefficients: Union[NDArray[np.float64], Sequence[Sequence[float]]]
+    ) -> Tuple[NDArray[np.float64], NDArray[np.float64]]: ...
+
+    @staticmethod
+    def get_sellmeier_coefficients(
+        wavelength: Union[NDArray[np.float64], Sequence[Sequence[float]]],
+        n_data: Union[NDArray[np.float64], Sequence[Sequence[float]]],
+        initial_guess: Union[NDArray[np.float64], Sequence[Sequence[float]], None] = None
+    ) -> NDArray[np.float64]: ...
+
+    @staticmethod
+    def sellmeier(
+        coefficients: Union[NDArray[np.float64], Sequence[Sequence[float]]],
+        wavelength: Union[NDArray[np.float64], Sequence[Sequence[float]]]
+    ) -> Tuple[NDArray[np.float64], NDArray[np.float64], NDArray[np.float64]]: ...
+
+class LaserClass:
+    def __init__(
+        self,
+        wavelength: Union[NDArray[np.float64], Sequence[Sequence[float]]], 
+        center_wavelength: Union[int, float, np.float64],
+        free_space_length: Union[int, float, np.float64],
+        target_f_rep: Union[int, float, np.float64]
+    ) -> None: ...
+
+    def add_component(
+        self,
+        component: "ComponentClass"
+    ) -> None: ...
+
+    def material_gdd(
+        self
+    ) -> None: ...
+
+    def ideal_grating_sep(
+        self,
+        grating_GDD: Union[NDArray[np.float64], Sequence[Sequence[float]]]
+    ) -> None: ...
+
+    def calculated_fiber_length(
+        self,
+        material: "MaterialClass"
+    ) -> np.float64: ...
+
+    def calculate_real_f_rep(
+        self
+    ) -> None: ...
+    
+    def calculate_free_space_length_without_components(
+        self
+    ) -> None: ...
+
+    def calculate_laser(
+        self,
+        fiber_material: "MaterialClass",
+        plotting: bool=True,
+        provided_fiber_length: Union[None, int, float, np.float64]=None
+    ) -> None: ...
+
+    @staticmethod
+    def gdd_grating(
+        wavelength: Union[NDArray[np.float64], Sequence[Sequence[float]]],
+        grating_distance: Union[int, float, np.float64],
+        grating_period: Union[int, float, np.float64]=1.0,
+        alpha: Union[int, float, np.float64]=31.3
+    ) -> NDArray[np.float64]: ...
+    
+class ComponentClass:
+    def __init__(
+        self,
+        material: "MaterialClass",
+        length: Union[int, float, np.float64],
+        position: str,
+        laser_instance: Union["LaserClass", None]=None
+    ) -> None: ...
+
+    def attach_laser(
+        self,
+        laser: "LaserClass"
+    ) -> None: ...
+
+    def gdd_calculator(
+        self
+    ) -> np.float64: ...

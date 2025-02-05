@@ -42,6 +42,12 @@ from .df_utils import (
     FSWP_PN_to_df,
 )
 
+from .NALM_calc import (
+    MaterialClass,
+    ComponentClass,
+    LaserClass,
+)
+
 # Expose all imported functions at the package level
 __all__ = [
     "get_all_filenames",
