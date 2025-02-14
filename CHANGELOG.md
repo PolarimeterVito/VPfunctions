@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.5.0] - 2025-02-05
+### Added
+- Module `NALM_calc.py` added, containing classes with methods for calculations of a NALM laser and GDD values.
+
 ## [0.4.1] - 2025-01-24
 ### Fixed
 - Corrected a wrong factor of 2 in the function  `calc_timingJitter`, yielding wrong results.
