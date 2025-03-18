@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.5.1] - 2025-03-18
+### Fixed
+- Corrected the calculation of linewidth in `calc_Linewidth`, which yielded wrong results.
+
 ## [0.5.0] - 2025-02-05
 ### Added
 - Module `NALM_calc.py` added, containing classes with methods for calculations of a NALM laser and GDD values.

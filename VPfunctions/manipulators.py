@@ -195,8 +195,8 @@ def calc_Linewidth(
     # Determine the integrand based on the beta-separation line
     toIntegrate = np.where(freqNoise[1] > beta_sep_line * measData[0], freqNoise[1], 0)
 
-    # Perform integration; the arrays are flipped to integrate from high to low frequency, then flipped back to match the original order
-    integrated = sp.integrate.cumulative_trapezoid(toIntegrate[::-1], measData[0][::-1], initial=0)[::-1]
+    # Perform integration; the arrays are flipped to integrate from high to low frequency, then flipped back to match the original order, sqrt applied to get linewidth
+    integrated = np.sqrt(-np.flip(sp.integrate.cumulative_trapezoid(np.flip(toIntegrate), np.flip(measData[0]), initial=0)))
 
     # Calculate and return the accumulated linewidth
     SCALE_FACTOR = np.sqrt(8 * np.log(2))
